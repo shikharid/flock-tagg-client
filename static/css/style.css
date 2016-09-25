@@ -12,10 +12,14 @@ a.no-deco{
 
 .list_head {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    background: #0abe50;
+
 }
 
+.btn-success{
+	color: #fff;
+	background: #0abe50;
+}
 .sideborder
 {
     padding: 15px;
