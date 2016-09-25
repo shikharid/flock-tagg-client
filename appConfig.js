@@ -9,7 +9,8 @@ angular.module("taggApp").config(['$locationProvider', '$resourceProvider', 'Res
 		$locationProvider.html5Mode({
                   enabled: true
         });
-        RestangularProvider.setBaseUrl('https://32915b8c.ngrok.io/');
+        var API_URL = "https://75597844.ngrok.io/";
+        RestangularProvider.setBaseUrl(API_URL);
         $resourceProvider.defaults.stripTrailingSlashes = false;
     }]);
 

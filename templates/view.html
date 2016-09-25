@@ -1,0 +1,67 @@
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">From:</h3>  {{ $ctrl.messageDetails.fromName }}
+    </div>
+    <form role="form" ng-submit="$ctrl.submit()">
+	    <div class="box-body">
+	    	<div class="row">
+	    		<div class="col-md-12">
+			        <div class="form-group">
+			        	<textarea name="message"
+			        		class="form-control"
+		        			style="height: 200px"
+		        			ng-model="$ctrl.displayMessage"
+		        			placeholder="Loading message.."
+		        			ng-disabled="true"></textarea>
+			        </div>
+	    		</div>
+	    	</div>
+	        <div class="row">
+	        	<div class="col-md-8">
+	        		<div class="form-group">
+			        	<ui-select class="form-control" multiple ng-model="$ctrl.displayTags" theme="bootstrap" sortable="true" close-on-select="false" ng-disabled="disabled" on-select="onTagSelect($item)" on-remove="onTagRemove($item)">
+						    <ui-select-match placeholder="Loading associated tags...">{{$item.tag_value}}</ui-select-match>
+						    <ui-select-choices repeat="tag in $ctrl.displayTags | propsFilter: {tag_value: $select.search}" reset-search-input=true>
+						      <div ng-bind-html="tag.tag_value | highlight: $select.search"></div>
+						    </ui-select-choices>
+						  </ui-select>
+			        </div>
+	        	</div>
+		        <div class="col-md-4">
+		        	<div class="row">
+		        		<div class="col-md-8">
+		        			<div class="form-group">
+		        				<input type="text" class="form-control" id="publisherName" ng-model="$ctrl.newTagValue" />
+		        			</div>
+		        		</div>
+		        		<div class="col-md-4">
+		        			<div class="form-group">
+		        				<button class="btn btn-primary pull-right" ng-click="$ctrl.saveTag()" placeholder="New Tag" type="button">Add</button>
+	        				</div>
+		        		</div>
+		        	</div>
+		        </div>
+	        </div>
+          <div class="row">
+            <div class="col-md-8">
+              <!-- files here -->
+			<ul class="list-group">
+						<li class="list-group-item list_head">
+
+							<span>Files</span>
+						</li>
+			    <a ng-repeat="file in $ctrl.displayAttachments" ng-class="{'fadeOut' : skill.done}"  class="list-group-item">
+
+			      <span class="trunc">{{file.file_data}}
+			      <button class="btn btn-primary btn-xs pull-right" style="padding: 4px; margin-right: 4px;" data-ng-click="openUrl(file.file_data)">open</button>
+			    </a>
+			  </ul>
+            </div>
+          </div>
+	    </div>
+	    <div class="box-footer">
+	    		<button ng-click="$ctrl.closeWindow()" type="submit" class="btn btn-danger pull-right"><i class="fa fa-envelope-o"></i> Close</button>
+	        	<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-envelope-o"></i> Update with Tags</button>
+	    </div>
+    </form>
+</div>
