@@ -79,6 +79,7 @@ angular.
 					} else {
 						if(self.allAttachments.indexOf(data.data.content) < 0) {
 							self.allAttachments.push(data.data.content);
+							self.messageDetails.attachments.push(data.data.content.id);
 						}
 					}
 		    	});
